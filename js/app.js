@@ -7,15 +7,28 @@
 //     console.log(`Phrase - phrase: `, phrase.phrase);
 // };
 
-const game = new Game();
-const randomPhrase = game.getRandomPhrase();
-const phrase = new Phrase(randomPhrase.phrase);
-phrase.addPhraseToDisplay();
+// const game = new Game();
+// const randomPhrase = game.getRandomPhrase();
+// const phrase = new Phrase(randomPhrase.phrase);
+// phrase.addPhraseToDisplay();
 
-// randomPhrase.addPhraseToDisplay;
+// // randomPhrase.addPhraseToDisplay;
 
-game.startGame();
-console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+// game.startGame();
+// console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+
+let game;
+
+$("#btn__reset").on("click", function(){
+    game = new Game();
+    game.startGame();
+
+});
+
+$(".key").on("click", function(){
+
+    
+});
 
 
 // logPhrase(game.getRandomPhrase());

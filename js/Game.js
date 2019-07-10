@@ -29,9 +29,9 @@ class Game {
     //on the active Phrase object.
     startGame(){
 
-      document.querySelector("#overlay").style.display = "none";
-      this.getRandomPhrase();
-      this.addPhraseToDisplay();
+      document.querySelector("#overlay").style.visibility = "hidden";
+      this.activePhrase = this.getRandomPhrase();
+      this.activePhrase.addPhraseToDisplay();
       
     };
 
