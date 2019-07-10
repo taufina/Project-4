@@ -21,15 +21,19 @@ class Game {
     //array and returns it.
     getRandomPhrase(){
         const randomNumber = Math.floor(Math.random()*(this.phrases.length));
-        return this.phrases[randomNumber];
-    
-
+        return this.phrases[randomNumber];    
     };
 
     // hides the start screen overlay, calls the getRandomPhrase() method, and sets the active phrase property 
     //with the chosen phrase.  It also adds that phrase to the board by calling the addPhraseToDisplay() method 
     //on the active Phrase object.
-    startGame(){};
+    startGame(){
+
+      document.querySelector("#overlay").style.display = "none";
+      this.getRandomPhrase();
+      this.addPhraseToDisplay();
+      
+    };
 
 // this method controls most of the game logic. It checks to see if the button clicked by the player matches a letter 
 // in the phrase, and then directs the game based on a correct or incorrect guess. This method should:

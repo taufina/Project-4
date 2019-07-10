@@ -3,20 +3,26 @@
  * app.js */
 
 
-const logPhrase = (phrase) => {
-    console.log(`Phrase - phrase: `, phrase.phrase);
-};
+// const logPhrase = (phrase) => {
+//     console.log(`Phrase - phrase: `, phrase.phrase);
+// };
 
 const game = new Game();
 const randomPhrase = game.getRandomPhrase();
-//const phrase = new Phrase(randomPhrase.phrase);
-randomPhrase.addPhraseToDisplay;
+const phrase = new Phrase(randomPhrase.phrase);
+phrase.addPhraseToDisplay();
 
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
+// randomPhrase.addPhraseToDisplay;
+
+game.startGame();
+console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+
+
+// logPhrase(game.getRandomPhrase());
+// logPhrase(game.getRandomPhrase());
+// logPhrase(game.getRandomPhrase());
+// logPhrase(game.getRandomPhrase());
+// logPhrase(game.getRandomPhrase());
 
 
 // Create a new instance of the Game class and add event listeners for the start button and onscreen keyboard buttons:
