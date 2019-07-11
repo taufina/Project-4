@@ -7,15 +7,16 @@ class Game {
     constructor() {
       this.missed = 0;
       this.phrases = [
-          new Phrase('practice makes perfect'),
-          new Phrase('Break a leg'),
-          new Phrase('A piece of cake'),
-          new Phrase('No pain no gain'), 
-          new Phrase('see eye to eye')];
+          new Phrase('hi'),
+          new Phrase('Break'),
+          new Phrase('hello'),
+          new Phrase('No pain'), 
+          new Phrase('see eye')];
 
         // This is the Phrase object that’s currently in play. The initial value is null. Within the startGame() 
         // method, this property will be set to the Phrase object returned from a call to the getRandomPhrase() method.
       this.activePhrase = null;
+      //this.handleInteraction();
     }
 
     //this method randomly retrieves one of the phrases stored in the phrases 
@@ -31,6 +32,7 @@ class Game {
     //on the active Phrase object.
     startGame(){
      // $("#overlay").fadeOut("slow");
+     //this.reset();
       $("#overlay").hide();
       this.activePhrase = this.getRandomPhrase();
       this.activePhrase.addPhraseToDisplay();
@@ -48,11 +50,21 @@ class Game {
     handleInteraction(e){
       if (this.activePhrase.checkLetter(e.target.textContent)){
         this.activePhrase.showMatchedLetter(e.target.textContent);
+
+        $(e.target).addClass("chosen").attr("disabled", true);
+        this.checkForWin();
+
+              
+        //console.log(e.target);
+        console.log($(this));
+        
       } else {
+        $(e.target).addClass("wrong").attr("disabled", true);
         this.removeLife();
+
+    
       }
 
-      this.checkForWin();
 
     };
 
@@ -65,7 +77,8 @@ class Game {
       this.missed +=1;
       
       if(this.missed<=5){
-        $( ".tries" )[0].remove();
+        // $( ".tries" )[0].remove();
+        $('.tries [src="images/liveHeart.png"]:first').attr("src","images/lostHeart.png");
       }
       
       if(this.missed===5){
@@ -82,7 +95,7 @@ class Game {
 
       if (lettersLeft.length===0){
         this.gameOver(true);
-      }else{this.gameOver(false)}
+      }
 
     };
 
@@ -110,5 +123,16 @@ class Game {
 
       }
 
+      this.reset();
+
     };
+
+    reset (){
+
+      $('.tries [src="images/lostHeart.png"]').attr("src","images/liveHeart.png");
+      $("#phrase ul").html("");
+      $(".key").removeClass("chosen").removeClass("wrong").removeAttr("disabled");
+
+
+    }
   }

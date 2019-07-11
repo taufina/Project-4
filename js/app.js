@@ -32,6 +32,8 @@ $(".key").on("click", function(e){
 });
 
 
+
+
 // logPhrase(game.getRandomPhrase());
 // logPhrase(game.getRandomPhrase());
 // logPhrase(game.getRandomPhrase());
