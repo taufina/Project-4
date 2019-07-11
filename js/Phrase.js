@@ -31,8 +31,16 @@ class Phrase {
     };
 
     // check to see if the letter selected by the player matches a letter in the phrase.
-    checkLetter(){};
+    checkLetter(letter){
+      if(this.phrase.indexOf(letter) > -1){
+        return true;
+      } else { return false;}
+      
+    };
 
     //reveal the letters on the board that matches the player's selection. 
-    showMatchedLetter(){};
+    showMatchedLetter(letter){
+      $(`.letter.${letter}`).removeClass('hide').addClass('show');
+
+    };
   }

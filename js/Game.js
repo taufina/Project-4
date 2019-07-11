@@ -3,6 +3,7 @@
  * Game.js */
 
 class Game {
+
     constructor() {
       this.missed = 0;
       this.phrases = [
@@ -21,6 +22,7 @@ class Game {
     //array and returns it.
     getRandomPhrase(){
         const randomNumber = Math.floor(Math.random()*(this.phrases.length));
+        console.log(this.phrases[randomNumber]);
         return this.phrases[randomNumber];    
     };
 
@@ -28,8 +30,8 @@ class Game {
     //with the chosen phrase.  It also adds that phrase to the board by calling the addPhraseToDisplay() method 
     //on the active Phrase object.
     startGame(){
-
-      document.querySelector("#overlay").style.visibility = "hidden";
+     // $("#overlay").fadeOut("slow");
+      $("#overlay").hide();
       this.activePhrase = this.getRandomPhrase();
       this.activePhrase.addPhraseToDisplay();
       
@@ -43,22 +45,70 @@ class Game {
 // If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call 
 //the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, 
 //also call the gameOver() method.
-    handleInteraction(){};
+    handleInteraction(e){
+      if (this.activePhrase.checkLetter(e.target.textContent)){
+        this.activePhrase.showMatchedLetter(e.target.textContent);
+      } else {
+        this.removeLife();
+      }
+
+      this.checkForWin();
+
+    };
 
 
     // removeLife(): this method removes a life from the scoreboard, by replacing one of the liveHeart.png images with 
     //a lostHeart.png image (found in the images folder) and increments the missed property. If the player has five 
     //missed guesses (i.e they're out of lives), then end the game by calling the gameOver() method.
 
-    removeLife(){};
+    removeLife(){
+      this.missed +=1;
+      
+      if(this.missed<=5){
+        $( ".tries" )[0].remove();
+      }
+      
+      if(this.missed===5){
+        console.log("call game over");
+        this.gameOver(false);
+      }
 
+    };
 
     // checkForWin(): this method checks to see if the player has revealed all of the letters in the active phrase.
 
-    checkForWin(){};
+    checkForWin(){
+      let hideClass = $(".hide");
+
+      if (hideClass.length===0){
+        this.gameOver(true);
+      }
+
+    };
 
     // gameOver(): this method displays the original start screen overlay, and depending on the outcome of the game, 
     //updates the overlay h1 element with a friendly win or loss message, and replaces the overlay’s start CSS class 
     //with either the win or lose CSS class.
-    gameOver(){};
+
+    //gameWon = true;
+    gameOver(gameWon){
+      
+      $("#overlay").show();
+      //$("#overlay").fadeIn("slow");
+
+      console.log("game over called, game won: "+gameWon);
+      if(gameWon){
+        console.log("game won");
+        $("#overlay h1").text("You Won");
+        //$("#game-over-message").text("You win");
+        $(".start").removeClass("lose").addClass("win");
+      }else{
+        console.log("game lost");
+        $("#overlay h1").text("You lost");
+        //$("#game-over-message").text("You lose");
+        $(".start").removeClass("win").addClass("lose");
+
+      }
+
+    };
   }
