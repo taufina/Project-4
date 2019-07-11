@@ -78,11 +78,11 @@ class Game {
     // checkForWin(): this method checks to see if the player has revealed all of the letters in the active phrase.
 
     checkForWin(){
-      let hideClass = $(".hide");
+      let lettersLeft = $(".hide");
 
-      if (hideClass.length===0){
+      if (lettersLeft.length===0){
         this.gameOver(true);
-      }
+      }else{this.gameOver(false)}
 
     };
 
