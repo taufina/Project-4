@@ -4,7 +4,7 @@
 
 
  /*
-    When a button is clicke
+    When the "Start Game" is clicked, a new game starts (the game class is called again).
  */
 
 
@@ -15,6 +15,10 @@ $("#btn__reset").on("click", function(){
     game.startGame();
 
 });
+
+ /*
+    when keys are clicked, the handleInteraction method is fired.
+ */
 
 $(".key").on("click", function(e){
 
