@@ -15,7 +15,7 @@ class Game {
       this.phrases = [
           new Phrase('A piece of cake'),
           new Phrase('Break a leg'),
-          new Phrase('You can’t judge a book by its cover'),
+          new Phrase('The best of both worlds'),
           new Phrase('No pain no gain'), 
           new Phrase('To hit the nail on the head')];
 
