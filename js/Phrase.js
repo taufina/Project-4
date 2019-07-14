@@ -4,7 +4,7 @@
 
  // Adding a phrase Class, through which a phrase is chosen and shown. 
 
-class Phrase {
+ class Phrase {
 
   // The chosen phrase's letters are shown in lower case.
     constructor(phrase) {
@@ -23,14 +23,14 @@ class Phrase {
       ul.innerHTML = "";
       const splittingPhrase = this.phrase.split('');
 
-      splittingPhrase.forEach(letter => {
+      splittingPhrase.forEach(phraseLetter => {
         const liElement = document.createElement('li');
         ul.appendChild(liElement);
-        if(letter===" "){
+        if(phraseLetter===" "){
           liElement.setAttribute("class", "space");
         } else {
-          liElement.innerHTML = letter;
-          liElement.setAttribute("class", `hide letter ${letter}`);
+          liElement.innerHTML = phraseLetter;
+          liElement.setAttribute("class", `hide letter ${phraseLetter}`);
         }
       });   
     };
@@ -40,15 +40,15 @@ class Phrase {
     If the letter is there, then the letters are shown.
     */
 
-checkLetter(letter){
-      if(this.phrase.indexOf(letter) > -1){
+  checkLetter(inputLetter){
+      if(this.phrase.indexOf(inputLetter) > -1){
         return true;
       } else { return false;}
       
-    };
+  };
 
-    showMatchedLetter(letter){
-      $(`.letter.${letter}`).removeClass('hide').addClass('show');
+  showMatchedLetter(phraseLetter){
+    $(`.letter.${phraseLetter}`).removeClass('hide').addClass('show');
 
-    };
-  }
+  };
+}

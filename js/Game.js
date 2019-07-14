@@ -154,3 +154,4 @@ class Game {
       $(".key").removeClass("chosen").removeClass("wrong").removeAttr("disabled");
     }
   }
+
